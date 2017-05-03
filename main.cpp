@@ -1,5 +1,5 @@
 #include<iostream>
-#include"definition.h"
+#include"Definition.h"
 
 using namespace std;
 
