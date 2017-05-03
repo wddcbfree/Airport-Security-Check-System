@@ -9,8 +9,4 @@ struct WindowsPort {
 	int TotOffTime, TotOnTime, TotServeTime, TotNum, ScheRestTime;
 }
 
-struct MaxLimits {
-	int CustSingleLine, Lines, SeqLen, TimeLen, TimeLen;
-}
-
 #endif
