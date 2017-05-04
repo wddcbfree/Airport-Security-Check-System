@@ -5,14 +5,14 @@
 
 using namespace std;
 
-struct WindowsPort windows[8] = {0};
+struct WindowsPort windows[8] = { 0 };
 
 void init();
 void input(int*, int*, string &);
 
 
-static int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen, 
-	MinRestSec, MaxRestSec;
+static int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen,
+MinRestSec, MaxRestSec;
 
 int main() {
 	int Time = 0;
@@ -34,12 +34,15 @@ void init() {
 		windows[i].State = 1;
 	}
 	string s;
-	ifstream in("ConfingFile.txt");
+	ifstream in("ConfigFile.txt");
 	if (in.is_open()) {
-		in >> s >> MaxCustSingleLine >> s >> MaxLines >> s >> MaxSeqLen >> s >> MinTimeLen 
+		in >> s >> MaxCustSingleLine >> s >> MaxLines >> s >> MaxSeqLen >> s >> MinTimeLen
 			>> s >> MaxTimeLen >> s >> MinRestSec >> s >> MaxRestSec;
-		cout << "The Confing File has been readed." << endl;
+		cout << "The Config File has been readed." << endl;
 		in.close();
+	}
+	else {
+		cout << "Can't open the Config File." << endl;
 	}
 	MaxCustSingleLine *= 10;
 	MaxLines *= 10;
@@ -61,15 +64,15 @@ void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows
 		char sta = '0';
 		for (auto iter : str) {
 			switch (iter) {
-				case 'G' : ++NumOfCustCome; break;
-				case 'C' : sta = 'C'; break;
-				case 'R' : sta = 'R'; break;
+			case 'G': ++NumOfCustCome; break;
+			case 'C': sta = 'C'; break;
+			case 'R': sta = 'R'; break;
 			}
 			if (isdigit(iter)) {
 				RequestOfWindows[iter - '0'] = sta;
 			}
 		}
-		
+
 	}
 	if (ProcessTime == *Time) {
 		CurTimeRequestOfWindows = RequestOfWindows;
