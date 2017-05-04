@@ -20,13 +20,13 @@ int main() {
 	int state = 1;
 	while (state) {
 		++Time;
-		string CurTimeWindowsRequest = (10, '0');
+		string CurTimeRequestOfWindows(10, '0');
 		int CurTimeNumOfCustCome = 0;
-		input(&Time, &CurTimeNumOfCustCome, RequestOfWindows);
+		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows);
 		//process();
 		//output();
 	}
-	reutrn 0;
+	return 0;
 }
 
 void init() {
@@ -48,13 +48,13 @@ void init() {
 	MaxTimeLen *= 10;
 }
 
-void input(int* Time, int* CurTimeNumOfCustCome, string &RequestOfWindows) {
-	static string WindowsRequest = (10, '0');
+void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows) {
+	static string RequestOfWindows(10, '0');
 	static int NumOfCustCome = 0, ProcessTime = 0;
 	if (ProcessTime < *Time) {
 		char ch;
 		NumOfCustCome = 0;
-		WindowsRequest = (10, '0');
+		RequestOfWindows = (10, '0');
 		cin >> ch >> ch >> ProcessTime;
 		string str;
 		cin >> str;
@@ -66,13 +66,13 @@ void input(int* Time, int* CurTimeNumOfCustCome, string &RequestOfWindows) {
 				case 'R' : sta = 'R'; break;
 			}
 			if (isdigit(iter)) {
-				WindowsRequest[todigit(iter)] = sta;
+				RequestOfWindows[iter - '0'] = sta;
 			}
 		}
 		
 	}
 	if (ProcessTime == *Time) {
-		*CurTimeWindowsRequest = RequestOfWindows;
+		CurTimeRequestOfWindows = RequestOfWindows;
 		*CurTimeNumOfCustCome = NumOfCustCome;
 	}
 }

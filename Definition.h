@@ -1,3 +1,4 @@
+#pragma once
 #ifndef DEFINITION_H
 #define DEFINITION_H
 
@@ -7,6 +8,6 @@ struct WindowsPort {
 	int CurStateTime;
 	int CurCustTime;
 	int TotOffTime, TotOnTime, TotServeTime, TotNum, ScheRestTime, RestSignal;
-}
+};
 
 #endif
