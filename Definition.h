@@ -3,10 +3,10 @@
 
 struct WindowsPort {
 	int State;	//the state of windows
-	int CurNum; //current guest number of windows
+	int CurNum; //current Cust number of windows
 	int CurStateTime;
-	int CurGuestTime;
-	int TotOffTime, TotOnTime, TotServeTime, TotNum, ScheRestTime;
+	int CurCustTime;
+	int TotOffTime, TotOnTime, TotServeTime, TotNum, ScheRestTime, RestSignal;
 }
 
 #endif
