@@ -8,11 +8,10 @@ using namespace std;
 struct WindowsPort windows[8] = { 0 };
 
 void init();
-void input(int*, int*, string &);
+void input(int*, int*, string &, int*);
 
 
-static int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen,
-MinRestSec, MaxRestSec;
+static int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen, MinRestSec, MaxRestSec;
 
 int main() {
 	int Time = 0;
@@ -22,7 +21,7 @@ int main() {
 		++Time;
 		string CurTimeRequestOfWindows(10, '0');
 		int CurTimeNumOfCustCome = 0;
-		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows);
+		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows, &state);
 		//process();
 		//output();
 	}
@@ -49,9 +48,11 @@ void init() {
 	MaxSeqLen *= 10;
 	MinTimeLen *= 10;
 	MaxTimeLen *= 10;
+	return;
 }
 
-void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows) {
+void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows, int* state) {
+	if (*state == 2) return;
 	static string RequestOfWindows(10, '0');
 	static int NumOfCustCome = 0, ProcessTime = 0;
 	if (ProcessTime < *Time) {
@@ -67,6 +68,7 @@ void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows
 			case 'G': ++NumOfCustCome; break;
 			case 'C': sta = 'C'; break;
 			case 'R': sta = 'R'; break;
+			case 'Q': *state = 2;
 			}
 			if (isdigit(iter)) {
 				RequestOfWindows[iter - '0'] = sta;
@@ -78,4 +80,5 @@ void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows
 		CurTimeRequestOfWindows = RequestOfWindows;
 		*CurTimeNumOfCustCome = NumOfCustCome;
 	}
+	return;
 }
