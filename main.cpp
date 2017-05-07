@@ -33,12 +33,12 @@ void init() {
 		windows[i].State = 1;
 	}
 	string s;
-	ifstream in("ConfigFile.txt");
-	if (in.is_open()) {
-		in >> s >> MaxCustSingleLine >> s >> MaxLines >> s >> MaxSeqLen >> s >> MinTimeLen
+	ifstream fin("ConfigFile.txt");
+	if (fin.is_open()) {
+		fin >> s >> MaxCustSingleLine >> s >> MaxLines >> s >> MaxSeqLen >> s >> MinTimeLen
 			>> s >> MaxTimeLen >> s >> MinRestSec >> s >> MaxRestSec;
 		cout << "The Config File has been readed." << endl;
-		in.close();
+		fin.close();
 	}
 	else {
 		cout << "Can't open the Config File." << endl;
