@@ -16,12 +16,12 @@ static int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen, MinRe
 int main() {
 	int Time = 0;
 	init();
-	int state = 1;
-	while (state) {
+	int State = 1, QueueNum = 0;
+	while (State) {
 		++Time;
 		string CurTimeRequestOfWindows(10, '0');
 		int CurTimeNumOfCustCome = 0;
-		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows, &state);
+		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows, &State);
 		//process();
 		//output();
 	}
