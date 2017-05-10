@@ -1,17 +1,13 @@
-#include<iostream>
-#include<fstream>
-#include<string>
 #include"Definition.h"
 
 using namespace std;
 
-struct WindowsPort windows[8] = { 0 };
+struct WindowsPort windows[MAXWINDOWS] = { 0 };
+int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen, MinRestSec, MaxRestSec;
 
 void init();
 void input(int*, int*, string &, int*);
-
-
-static int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen, MinRestSec, MaxRestSec;
+void output(int, int, int);
 
 int main() {
 	int Time = 0;
@@ -19,66 +15,11 @@ int main() {
 	int State = 1, QueueNum = 0;
 	while (State) {
 		++Time;
-		string CurTimeRequestOfWindows(10, '0');
+		string CurTimeRequestOfWindows(MAXWINDOWS, '0');
 		int CurTimeNumOfCustCome = 0;
 		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows, &State);
 		//process();
-		//output();
+		output(Time, QueueNum, State);
 	}
 	return 0;
-}
-
-void init() {
-	for (int i = 1; i <= 4; ++i) {
-		windows[i].State = 1;
-	}
-	string s;
-	ifstream fin("ConfigFile.txt");
-	if (fin.is_open()) {
-		fin >> s >> MaxCustSingleLine >> s >> MaxLines >> s >> MaxSeqLen >> s >> MinTimeLen
-			>> s >> MaxTimeLen >> s >> MinRestSec >> s >> MaxRestSec;
-		cout << "The Config File has been readed." << endl;
-		fin.close();
-	}
-	else {
-		cout << "Can't open the Config File." << endl;
-	}
-	MaxCustSingleLine *= 10;
-	MaxLines *= 10;
-	MaxSeqLen *= 10;
-	MinTimeLen *= 10;
-	MaxTimeLen *= 10;
-	return;
-}
-
-void input(int* Time, int* CurTimeNumOfCustCome, string &CurTimeRequestOfWindows, int* state) {
-	if (*state == 2) return;
-	static string RequestOfWindows(10, '0');
-	static int NumOfCustCome = 0, ProcessTime = 0;
-	if (ProcessTime < *Time) {
-		char ch;
-		NumOfCustCome = 0;
-		RequestOfWindows = (10, '0');
-		cin >> ch >> ch >> ProcessTime;
-		string str;
-		cin >> str;
-		char sta = '0';
-		for (auto iter : str) {
-			switch (iter) {
-			case 'G': ++NumOfCustCome; break;
-			case 'C': sta = 'C'; break;
-			case 'R': sta = 'R'; break;
-			case 'Q': *state = 2;
-			}
-			if (isdigit(iter)) {
-				RequestOfWindows[iter - '0'] = sta;
-			}
-		}
-
-	}
-	if (ProcessTime == *Time) {
-		CurTimeRequestOfWindows = RequestOfWindows;
-		*CurTimeNumOfCustCome = NumOfCustCome;
-	}
-	return;
 }

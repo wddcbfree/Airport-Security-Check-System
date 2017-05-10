@@ -2,12 +2,20 @@
 #ifndef DEFINITION_H
 #define DEFINITION_H
 
+#include<iostream>
+#include<fstream>
+#include<string>
+#define MAXWINDOWS 10
+
 struct WindowsPort {
-	int State;	//the state of windows
-	int CurNum; //current Cust number of windows
+	int State;
+	int CurNum, CurCustTime;
 	int CurStateTime;
-	int CurCustTime;
-	int TotOffTime, TotOnTime, TotServeTime, TotNum, ScheRestTime, RestSignal;
+	int TotOffTime, TotOnTime;
+	int TotServeTime, TotNum, ScheRestTime, RestSignal;
 };
+
+extern int MaxCustSingleLine, MaxLines, MaxSeqLen, MinTimeLen, MaxTimeLen, MinRestSec, MaxRestSec;
+extern struct WindowsPort windows[MAXWINDOWS];
 
 #endif
