@@ -1,7 +1,6 @@
-#include"Definition.h"
+#include "Definition.h"
 
 using namespace std;
-
 
 void init() {
 	for (int i = 1; i <= 4; ++i) {

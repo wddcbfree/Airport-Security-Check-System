@@ -2,9 +2,9 @@
 #ifndef DEFINITION_H
 #define DEFINITION_H
 
-#include<iostream>
-#include<fstream>
-#include<string>
+#include <iostream>
+#include <fstream>
+#include <string>
 #define MAXWINDOWS 10
 
 struct WindowsPort {

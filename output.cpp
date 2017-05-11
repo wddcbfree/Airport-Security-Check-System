@@ -1,5 +1,5 @@
-#include<math.h>
-#include"Definition.h"
+#include <math.h>
+#include "Definition.h"
 
 using namespace std;
 

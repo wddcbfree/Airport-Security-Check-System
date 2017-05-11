@@ -1,4 +1,4 @@
-#include"Definition.h"
+#include "Definition.h"
 
 using namespace std;
 
@@ -17,7 +17,6 @@ int main() {
 		++Time;
 		string CurTimeRequestOfWindows(MAXWINDOWS, '0');
 		int CurTimeNumOfCustCome = 0;
-		input(&Time, &CurTimeNumOfCustCome, CurTimeRequestOfWindows, &State);
 		//process();
 		output(Time, QueueNum, State);
 	}
