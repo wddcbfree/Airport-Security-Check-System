@@ -6,7 +6,6 @@
 #include <fstream>
 #include <string>
 #define MAXWINDOWS 10
-
 struct WindowsPort {
 	int State;
 	int CurNum, CurCustTime;
