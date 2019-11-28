@@ -1,4 +1,4 @@
-# Airport-Security-System
+# Airport-Security-Check-System
 
 This is a term project in order to simulate airport security system.
 
